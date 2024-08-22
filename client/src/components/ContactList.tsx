@@ -1,23 +1,42 @@
 import React from 'react'
-// import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import { RootState } from '../store'
+import { useQuery } from '@tanstack/react-query'
+import { getAllContact } from '../helpers/apis/contact-apis'
+import { Contact } from '../helpers/types/contact-types'
 
 const ContactList: React.FC = () => {
   //   const contacts = useSelector((state: RootState) => state.contact.contacts)
-  const contacts = [
-    {
-      id: 1,
-      name: 'Adithya',
-      age: 26,
-      email: 'adithya@test.com',
-      city: 'Tvm',
-      state: 'ker',
-      pin: 695308,
-      sex: 'male',
-      active: true,
-    },
-  ]
+  const {
+    data: contacts,
+    isLoading,
+    isError,
+  } = useQuery<Contact[]>({
+    queryKey: ['contacts'],
+    queryFn: getAllContact,
+  })
+  // const contacts = [
+  //   {
+  //     id: 1,
+  //     name: 'Adithya',
+  //     age: 26,
+  //     email: 'adithya@test.com',
+  //     city: 'Tvm',
+  //     state: 'ker',
+  //     pin: 695308,
+  //     sex: 'male',
+  //     active: true,
+  //   },
+  // ]
+
+  if (isLoading) {
+    return <div>Loading</div>
+  }
+
+  if (isLoading) {
+    return <div>Error</div>
+  }
+
+  console.log('contacts', contacts)
 
   return (
     <div className='w-full max-w-full md:max-w-[90%] bg-white shadow-lg rounded-lg overflow-hidden'>
@@ -63,7 +82,7 @@ const ContactList: React.FC = () => {
             </tr>
           </thead>
           <tbody className='bg-white divide-y divide-gray-200 font-palanquin'>
-            {contacts.map(contact => (
+            {contacts?.map(contact => (
               <tr key={contact.id} className='hover:bg-gray-50'>
                 <td className='px-6 py-4 whitespace-nowrap'>
                   <div className='text-sm font-medium text-gray-900'>
@@ -77,7 +96,9 @@ const ContactList: React.FC = () => {
                   <div className='text-sm text-gray-500'>{contact.email}</div>
                 </td>
                 <td className='px-6 py-4 whitespace-nowrap'>
-                  <div className='text-sm text-gray-500'>{contact.active}</div>
+                  <div className='text-sm text-gray-500'>
+                    {contact.active ? 'yes' : 'no'}
+                  </div>
                 </td>
                 <td className='px-6 py-4 whitespace-nowrap text-sm font-medium'>
                   <Link
@@ -92,7 +113,7 @@ const ContactList: React.FC = () => {
           </tbody>
         </table>
       </div>
-      {contacts.length === 0 && (
+      {contacts?.length === 0 && (
         <div className='text-center py-4 text-gray-500 font-palanquin'>
           No contacts found.
         </div>
