@@ -14,16 +14,6 @@ const ContactList: React.FC = () => {
     queryFn: getAllContact,
   })
 
-  if (isLoading) {
-    return <div>Loading</div>
-  }
-
-  if (isLoading) {
-    return <div>Error</div>
-  }
-
-  console.log('contacts', contacts)
-
   return (
     <div className='w-full max-w-full md:max-w-[90%] bg-white shadow-lg rounded-lg overflow-hidden'>
       <div className='px-4 py-5 sm:px-6'>
@@ -68,38 +58,56 @@ const ContactList: React.FC = () => {
             </tr>
           </thead>
           <tbody className='bg-white divide-y divide-gray-200 font-palanquin'>
-            {contacts?.map(contact => (
-              <tr key={contact.id} className='hover:bg-gray-50'>
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <div className='text-sm font-medium text-gray-900'>
-                    {contact.name}
-                  </div>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <div className='text-sm text-gray-500'>{contact.age}</div>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <div className='text-sm text-gray-500'>{contact.email}</div>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap'>
-                  <div className='text-sm text-gray-500'>
-                    {contact.active ? 'yes' : 'no'}
-                  </div>
-                </td>
-                <td className='px-6 py-4 whitespace-nowrap text-sm font-medium'>
-                  <Link
-                    to={`/contact/${contact.id}`}
-                    className='text-indigo-600 hover:text-indigo-900'
-                  >
-                    Edit/Delete
-                  </Link>
+            {isLoading && (
+              <tr>
+                <td colSpan={5} className='px-6 py-4 text-center'>
+                  <div className='text-sm text-gray-500'>Loading...</div>
                 </td>
               </tr>
-            ))}
+            )}
+            {isError && (
+              <tr>
+                <td colSpan={5} className='px-6 py-4 text-center'>
+                  <div className='text-sm text-red-500'>
+                    Error loading contacts.
+                  </div>
+                </td>
+              </tr>
+            )}
+            {!isLoading &&
+              !isError &&
+              contacts?.map(contact => (
+                <tr key={contact.id} className='hover:bg-gray-50'>
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <div className='text-sm font-medium text-gray-900'>
+                      {contact.name}
+                    </div>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <div className='text-sm text-gray-500'>{contact.age}</div>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <div className='text-sm text-gray-500'>{contact.email}</div>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap'>
+                    <div className='text-sm text-gray-500'>
+                      {contact.active ? 'yes' : 'no'}
+                    </div>
+                  </td>
+                  <td className='px-6 py-4 whitespace-nowrap text-sm font-medium'>
+                    <Link
+                      to={`/contact/${contact.id}`}
+                      className='text-indigo-600 hover:text-indigo-900'
+                    >
+                      Edit/Delete
+                    </Link>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
-      {contacts?.length === 0 && (
+      {!isLoading && !isError && contacts?.length === 0 && (
         <div className='text-center py-4 text-gray-500 font-palanquin'>
           No contacts found.
         </div>
