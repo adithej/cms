@@ -17,7 +17,7 @@ const Header: React.FC = () => {
           Contact
         </Link>
         <Link
-          to='/graphs'
+          to='/global'
           className='text-neutral-600 hover:text-neutral-800 underline font-palanquin'
         >
           Graphs

@@ -26,9 +26,9 @@ const Sidebar: React.FC = () => {
         <Button
           secondary
           className={`w-full rounded-r-lg ${
-            isActive('/graphs') ? 'bg-neutral-700' : ''
+            isActive('/global') ? 'bg-neutral-700' : ''
           }`}
-          onClick={() => navigate('/graphs')}
+          onClick={() => navigate('/global')}
         >
           Global Info
           <FaChevronRight className='h-4' />
