@@ -5,7 +5,6 @@ import { getAllContact } from '../helpers/apis/contact-apis'
 import { Contact } from '../helpers/types/contact-types'
 
 const ContactList: React.FC = () => {
-  //   const contacts = useSelector((state: RootState) => state.contact.contacts)
   const {
     data: contacts,
     isLoading,
@@ -14,19 +13,6 @@ const ContactList: React.FC = () => {
     queryKey: ['contacts'],
     queryFn: getAllContact,
   })
-  // const contacts = [
-  //   {
-  //     id: 1,
-  //     name: 'Adithya',
-  //     age: 26,
-  //     email: 'adithya@test.com',
-  //     city: 'Tvm',
-  //     state: 'ker',
-  //     pin: 695308,
-  //     sex: 'male',
-  //     active: true,
-  //   },
-  // ]
 
   if (isLoading) {
     return <div>Loading</div>
