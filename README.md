@@ -1,24 +1,24 @@
-# Contact Trace - Conatct Management App with Charts and Maps
+# Contact Trace - Contact Management App with Charts and Maps
 
-## Build with Django, React, Tailwind CSS, TanStack Query,React Router, Recharts and React-Leaflet
+## Build with Django, React, Tailwind CSS, TanStack Query, React Router, Recharts and React-Leaflet
 
 Preview the project [Contact Trace](https://ailment-view.vercel.app).
 
 ### Contact Page:
 
-<img width="1434" alt="contact page" src="https://github.com/user-attachments/assets/3d8bd980-35bd-4aef-b089-ef138d7c1648">
+<img width="1434" alt="contact page" src="https://github.com/user-attachments/assets/30cb7d93-6ea0-4788-9b65-8aae27996d48">
 
 ### Create Contact Page
 
-<img width="1434" alt="create contact" src="https://github.com/user-attachments/assets/1ed65626-b4f3-4e95-a7fe-b466409679a0">
+<img width="1434" alt="create contact" src="https://github.com/user-attachments/assets/e7cf8c07-23f8-4fe0-b766-6080563af2f3">
 
 ### Individual User Contact Page
 
-<img width="1434" alt="edit contact" src="https://github.com/user-attachments/assets/988c06f0-1303-40a2-aa51-ee1fa3063d49">
+<img width="1434" alt="contact details" src="https://github.com/user-attachments/assets/23ee37e3-471f-47c1-849b-7f62f5fc54ee">
 
-### Graphs Page
+### Global Info Page
 
-<img width="1434" alt="graph page" src="https://github.com/user-attachments/assets/58ceec6c-7729-4e25-a0ad-2206035faffe">
+<img width="1434" alt="global info" src="https://github.com/user-attachments/assets/6ba5b036-7133-4c5c-bfcd-278cc21f458b">
 
 ## Getting Started
 
@@ -64,4 +64,4 @@ You will need two terminals pointed to the frontend and backend directories to s
 
 1. Run this command to start the backend server in the [server] directory: `python manage.py runserver` (You have to run this command while you are sourced into the virtual environment)
 
-2. Run this command to start the frontend development server in the [client] directory: `npm start` (This will start the frontend on the adddress localhost:3000)
+2. Run this command to start the frontend development server in the [client] directory: `npm start` (This will start the frontend on the address localhost:3000)
